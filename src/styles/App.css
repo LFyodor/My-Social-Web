@@ -1,0 +1,322 @@
+@font-face {
+    font-family: 'Gilroy';
+    src: url(/Fonts/Gilroy-Light.woff);
+}
+
+body {
+    background: url(/Img/Tavern.jpg) no-repeat;
+    background-size: 1850px 980px;
+    background-attachment: fixed;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gilroy';
+    src: url(/Fonts/Gilroy-Light.woff);
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* #root {
+
+} */
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    display: flex;
+    align-items: center;
+}
+
+.navbarLink {
+    width: 250px;
+    height: 35px;
+    padding: 5px 15px;
+    color: black;
+    font-size: 16px;
+    background-color: darkgoldenrod;
+    cursor: pointer;
+    float: left;
+    text-decoration: none;
+    margin-bottom: 2px;
+}
+
+.navbarLink:first-child {
+    margin-top: 2px;
+}
+
+.navbarLink:hover {
+    background-color: rgb(255, 183, 2);
+}
+
+.All {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.MainPage, .ProfilePage, .SinglePage {
+    width: 50%;
+    align-self: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 3px solid darkgoldenrod;
+    min-height: 100px;
+    background-size: cover;
+}
+
+h2 {
+    font-size: 40px;
+    color: darkgoldenrod;
+    margin: 25px;
+}
+
+.FormAdd {
+    height: auto;
+}
+
+select {
+    width: 160px;
+    height: 35px;
+    padding: 5px 15px;
+    color: black;
+    font-size: 14px;
+    background-color: darkgoldenrod;
+    cursor: pointer;
+    float: right;
+}
+
+select:hover {
+    background-color: rgb(255, 183, 2);
+}
+
+.list {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.post {
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 15px;
+    border: 3px solid darkgoldenrod;
+    margin-top: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-size: 50px;
+    color: darkgoldenrod;
+    margin-top: 80px;
+}
+
+.post-content {
+    width: 75%;
+    font-size: 20px;
+    color: darkgoldenrod;
+    height: auto;
+    cursor: pointer;
+}
+
+.post-content p {
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+.addPost, .comeIn {
+    width: 100px;
+    height: 35px;
+    padding: 5px 15px;
+    color: black;
+    font-size: 14px;
+    background-color: darkgoldenrod;
+    cursor: pointer;
+    float: right;
+}
+
+.addPost:hover, .comeIn:hover {
+    background-color: rgb(255, 183, 2);
+}
+
+.searchAndSort p {
+    text-align: end;
+    margin-top: 30px;
+    color: darkgoldenrod;
+    font-size: 20px;
+}
+
+.post-delete button {
+    width: 100px;
+    height: 35px;
+    padding: 5px 15px;
+    color: black;
+    font-size: 14px;
+    background-color: darkgoldenrod;
+    cursor: pointer;
+}
+
+.post-delete button:hover {
+    background-color: rgb(255, 183, 2);
+}
+
+.post-enter {
+    transform: translateX(-550px);
+}
+
+.post-enter-active {
+    transform: translateX(0px);
+    transition: all 500ms ease-in;
+}
+
+.post-exit {
+    opacity: 1;
+}
+
+.post-exit-active {
+    transform: translateX(550px);
+    transition: all 500ms ease-in;
+}
+
+.numberPage {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.page {
+    width: 50px;
+    height: 35px;
+    padding: 10px;
+    color: black;
+    font-size: 14px;
+    background-color: darkgoldenrod;
+    cursor: pointer;
+}
+
+.page:hover {
+    background-color: rgb(255, 183, 2);
+}
+
+.pageCurrent {
+    font-weight: bold;
+    border: 2px solid black;
+    background-color: rgb(255, 183, 2);
+}
+
+.loginAndPassword {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login, .password {
+    width: 100%;
+    padding: 5px 15px;
+    margin: 5px 0;
+    border: 3px solid darkgoldenrod;
+    background: transparent;
+    color: darkgoldenrod;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.regularBox {
+    display: flex;
+    justify-content: center;
+}
+
+.regular, .first, .showComments, .addComment {
+    width: 200px;
+    height: 35px;
+    padding: 5px 15px;
+    color: black;
+    font-size: 14px;
+    background-color: darkgoldenrod;
+    cursor: pointer;
+    margin-top: 50px;
+}
+
+.showComments {
+    align-self: flex-end;
+}
+
+.addComment {
+    margin-top: 0;
+    align-self: flex-end;
+}
+
+.regular:hover, .first:hover, .showComments:hover, .addComment:hover {
+    background-color: rgb(255, 183, 2);
+}
+
+.buttonInPost {
+    display: flex;
+    flex-direction: column;
+}
+
+.textComment {
+    width: 100%;
+    min-height: 100px;
+    height: auto;
+    padding: 5px 15px;
+    margin: 5px 0;
+    border: 3px solid darkgoldenrod;
+    background: transparent;
+    color: darkgoldenrod;
+    resize: none;
+    box-sizing: border-box;
+    font-family: 'Gilroy';
+    src: url(/Fonts/Gilroy-Light.woff);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    word-wrap: break-word;
+    margin-top: 50px;
+}
+
+.information {
+    width: 250px;
+    min-height: 35px;
+    padding: 5px 15px;
+    color: black;
+    font-size: 16px;
+    background-color: darkgoldenrod;
+    float: left;
+    text-decoration: none;
+    margin-bottom: 2px;
+}
+
+.TitleInside {
+    font-size: 50px;
+    color: darkgoldenrod;
+    margin-top: 80px;
+    background: transparent;
+    border: none;
+    width: 100%;
+}
+
+.DescriptionInside {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: darkgoldenrod;
+    font-size: 24px;
+}
+
+.UserIdInside, .TimeAddInside {
+    color: darkgoldenrod;
+}

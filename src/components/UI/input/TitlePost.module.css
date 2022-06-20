@@ -1,0 +1,15 @@
+.titlePost {
+    width: 100%;
+    height: auto;
+    padding: 5px 15px;
+    margin: 5px 0;
+    border: 3px solid darkgoldenrod;
+    background: transparent;
+    color: darkgoldenrod;
+    box-sizing: border-box;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    word-wrap: break-word;
+}

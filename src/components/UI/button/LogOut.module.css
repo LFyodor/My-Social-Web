@@ -1,0 +1,14 @@
+.logOut {
+    width: 100px;
+    height: 35px;
+    padding: 5px 15px;
+    color: black;
+    font-size: 14px;
+    background-color: darkgoldenrod;
+    cursor: pointer;
+    margin: 25px;
+}
+
+.logOut:hover {
+    background-color: rgb(255, 183, 2);
+}
