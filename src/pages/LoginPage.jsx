@@ -1,60 +1,58 @@
-import React, { useContext, useState } from 'react';
-import { AuthContext } from '../context/index';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { getPosts } from '../store/loadPostSlice';
-import { fetchSite } from '../store/loadSlice';
+import { loginServer } from '../API/user/login';
 
 const LoginPage = () => {
     const navigate = useNavigate();
-    const [loginName, setLoginName] = useState('');
-    const [passwordWord, setPasswordWord] = useState('');
+    const [emailAuth, setEmailAuth] = useState('');
+    const [passwordAuth, setPasswordAuth] = useState('');
     const dispatch = useDispatch()
 
-    const {isAuth, setIsAuth} = useContext(AuthContext);
     const login = (e) => {
         e.preventDefault();
-        if (loginName === 'Teodor' && passwordWord === '963') {
-            setIsAuth(true);
-            localStorage.setItem('auth', 'true')
-            navigate('/mainpage')
-            dispatch(fetchSite())
-        } else {
-            return (
-                alert('Login or Password Incorrect')
-            )
-        }
+        if (emailAuth.trim().length &&
+            passwordAuth.trim().length) {
+                const userLogin = {
+                    email: emailAuth,
+                    password: passwordAuth
+                }
+                dispatch(loginServer(userLogin))
+                navigate('/posts/all')
+            }
+            setEmailAuth('')
+            setPasswordAuth('')
     }
 
     return (
-        <div className="loginAndPassword">
+        <div className="emailAndPassword">
             <h1 style={{textAlign: 'center'}}>
                 Please, Introduce Yourself
             </h1>
             <form onSubmit={login}>
                 <input
-                    value={loginName}
-                    onChange={e => setLoginName(e.target.value)}
-                    className="login"
+                    value={emailAuth}
+                    onChange={e => setEmailAuth(e.target.value)}
+                    className="email"
                     type="text"
-                    placeholder="Enter Your Login"
+                    placeholder="Enter Your Email"
                 />
                 <input
-                    value={passwordWord}
-                    onChange={e => setPasswordWord(e.target.value)}
+                    value={passwordAuth}
+                    onChange={e => setPasswordAuth(e.target.value)}
                     className="password"
                     type="password"
                     placeholder="Enter Your Password"
                 />
                 <button
-                    onClick={() => login}
+                    onClick={login}
                     className="comeIn">
                         Come In
                 </button>
             </form>
             <div className="regularBox">
                 <button
-                    onClick={() => navigate('/signuppage')}
+                    onClick={() => navigate('/auth/sign_up')}
                     className="regular">
                         For the First Time?
                 </button>

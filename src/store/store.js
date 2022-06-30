@@ -1,13 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import postReducer from './postSlice';
-import loadPostSlice from "./loadPostSlice";
-import loadSlice from './loadSlice';
-import { createSagaMiddlewqre } from 'redux-saga';
+import userSlice from "./userSlice";
 
 export const store = configureStore({
     reducer: {
+        users: userSlice,
         posts: postReducer,
-        loadposts: loadPostSlice,
-        loadsite: loadSlice,
     },
 });

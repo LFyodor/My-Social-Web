@@ -1,34 +1,29 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import MainPage from "../pages/MainPage";
 import ProfilePage from "../pages/ProfilePage";
-import SinglePage from "../pages/SinglePage";
+import SinglePost from "../pages/SinglePost";
 import LoginPage from "../pages/LoginPage";
-import { AuthContext } from '../context';
 import SignUpPage from "../pages/SignUpPage";
+import { useSelector } from 'react-redux';
 
 const AppRouter = () => {
-    const {isAuth, isLoading} = useContext(AuthContext);
-    console.log("Is Auth?", isAuth);
-
-    if (isLoading) {
-        return <h1>Clean Up After a Brawl</h1>
-    }
+    const Auth = useSelector((state) => state.users.auth);
 
     return (
-        isAuth
-            ?
+        Auth
+            ?    
             <Routes>
-                <Route path="/mainpage" element={<MainPage />} />
-                <Route path="/profilepage" element={<ProfilePage />} />
                 <Route path="*" element={<MainPage />} />
-                <Route path="/singlepage/:id/:title" element={<SinglePage />} />
+                <Route path="/posts/all" element={<MainPage />} />
+                <Route path="/user/profile" element={<ProfilePage />} />
+                <Route path="/posts/post/:id" element={<SinglePost />} />
             </Routes>
             :
             <Routes>
                 <Route path="*" element={<LoginPage />} />
-                <Route path="/loginpage" element={<LoginPage />} />
-                <Route path="/signuppage" element={<SignUpPage />} />
+                <Route path="/auth/sign_in" element={<LoginPage />} />
+                <Route path="/auth/sign_up" element={<SignUpPage />} />
             </Routes>
     );
 };

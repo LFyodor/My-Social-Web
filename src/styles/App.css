@@ -19,16 +19,22 @@ body {
     font-style: normal;
 }
 
-/* #root {
-
-} */
-
 .navbar {
     display: flex;
     flex-direction: column;
     width: 250px;
     display: flex;
     align-items: center;
+}
+
+.navbar-fixed {
+    top: 100px;
+    border-width: 0 0 1px;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    background-size: cover;
+    position: fixed;
 }
 
 .navbarLink {
@@ -58,7 +64,8 @@ body {
     flex-direction: column;
 }
 
-.MainPage, .ProfilePage, .SinglePage {
+.MainPage, .ProfilePage, .SinglePost {
+    margin-top: 100px;
     width: 50%;
     align-self: center;
 }
@@ -70,6 +77,15 @@ body {
     border-bottom: 3px solid darkgoldenrod;
     min-height: 100px;
     background-size: cover;
+}
+
+.header-fixed {
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    background-size: cover;
+    position: fixed;
 }
 
 h2 {
@@ -97,12 +113,21 @@ select:hover {
     background-color: rgb(255, 183, 2);
 }
 
-.list {
+.post-list {
     display: flex;
     flex-direction: column-reverse;
 }
 
-.post {
+.comment-list-opened {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.comment-list-closed {
+    display: none;
+}
+
+.post, .comment {
     width: 100%;
     height: auto;
     display: flex;
@@ -124,6 +149,10 @@ h1 {
     font-size: 20px;
     color: darkgoldenrod;
     height: auto;
+    text-decoration: none;
+}
+
+.post-content {
     cursor: pointer;
 }
 
@@ -168,20 +197,20 @@ h1 {
     background-color: rgb(255, 183, 2);
 }
 
-.post-enter {
+.post-enter, .comment-enter {
     transform: translateX(-550px);
 }
 
-.post-enter-active {
+.post-enter-active, .comment-enter-active {
     transform: translateX(0px);
     transition: all 500ms ease-in;
 }
 
-.post-exit {
+.post-exit, .comment-exit {
     opacity: 1;
 }
 
-.post-exit-active {
+.post-exit-active, .comment-exit-active {
     transform: translateX(550px);
     transition: all 500ms ease-in;
 }
@@ -212,7 +241,7 @@ h1 {
     background-color: rgb(255, 183, 2);
 }
 
-.loginAndPassword {
+.emailAndPassword {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -221,7 +250,7 @@ h1 {
     margin-right: auto;
 }
 
-.login, .password {
+.email, .password, .firstName, .lastName {
     width: 100%;
     padding: 5px 15px;
     margin: 5px 0;
@@ -239,7 +268,7 @@ h1 {
     justify-content: center;
 }
 
-.regular, .first, .showComments, .addComment {
+.regular, .first, .showComments, .addComment, .edit {
     width: 200px;
     height: 35px;
     padding: 5px 15px;
@@ -254,12 +283,17 @@ h1 {
     align-self: flex-end;
 }
 
-.addComment {
+.addComment, .edit {
     margin-top: 0;
     align-self: flex-end;
 }
 
-.regular:hover, .first:hover, .showComments:hover, .addComment:hover {
+.postBody {
+    display: flex;
+    flex-direction: column;
+}
+
+.regular:hover, .first:hover, .showComments:hover, .addComment:hover, .edit:hover {
     background-color: rgb(255, 183, 2);
 }
 
@@ -301,6 +335,16 @@ h1 {
     margin-bottom: 2px;
 }
 
+.information-fixed {
+    top: 180px;
+    border-width: 0 0 1px;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    background-size: cover;
+    position: fixed;
+}
+
 .TitleInside {
     font-size: 50px;
     color: darkgoldenrod;
@@ -315,8 +359,26 @@ h1 {
     margin-bottom: 30px;
     color: darkgoldenrod;
     font-size: 24px;
+    background: transparent;
+    border: none;
 }
 
 .UserIdInside, .TimeAddInside {
+    color: darkgoldenrod;
+}
+
+.commentForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    border: 3px solid darkgoldenrod;
+    margin-top: 15px;
     color: darkgoldenrod;
 }

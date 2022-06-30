@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PostItem from "./PostItem";
 import {TransitionGroup, CSSTransition} from "react-transition-group";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchPosts } from '../API/posts/fetchPosts';
 
-const PostList = ({titleTavern}) => {
+const PostList = () => {
     const posts = useSelector((state) => state.posts.posts);
+    const {loading, error} = useSelector(state => state.posts);
+    const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem('user'))
+    let tempPosts = null
+
+    useEffect(() => {
+        dispatch(fetchPosts());
+      }, [dispatch]);
+
+    const postLink = window.location.href
+    const postLinkArray = postLink.split('/')
+    if (postLinkArray.includes('profile')) {
+        tempPosts = posts.filter((post) => post.user_id === user.id)   
+    } else {
+        tempPosts = posts
+    }
 
     if (!posts.length) {
         return (
@@ -17,13 +34,15 @@ const PostList = ({titleTavern}) => {
     return (
         <div>
             <h1 style={{textAlign: 'center'}}>
-                {titleTavern}
+                Tavern "Happy Raccoon"
             </h1>
             <h1>
-                Total Discussions {posts.length}
+                Total Discussions {tempPosts.length}
             </h1>
-            <TransitionGroup className="list">
-            {posts?.map((post, index) =>
+            {loading === 'loading' && <h1>Loading...</h1>}
+            {error && <h1>An error occurred: {error}</h1>}
+            <TransitionGroup className="post-list">
+            {tempPosts?.map((post) =>
                 <CSSTransition
                     key={post.id}
                     title={post.title}
@@ -32,7 +51,7 @@ const PostList = ({titleTavern}) => {
                     classNames="post"
                     post={post}
                 >
-                    <PostItem number={index + 1} post={post} />
+                    <PostItem />
                 </CSSTransition>
             )}
             </TransitionGroup>

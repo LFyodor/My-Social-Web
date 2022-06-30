@@ -1,26 +1,40 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { deletePost } from '../store/postSlice';
+import { singlePostServer } from '../API/posts/singlePost';
+import { deletePostServer } from '../store/postSlice';
 
 const PostItem = ({post}) => {
     const dispatch = useDispatch();
 
-    const navigate = useNavigate()
+    const saveInStorage = () => {
+        localStorage.setItem('post', JSON.stringify(post))
+        dispatch(singlePostServer(post.id))
+    }
 
     return (
+        <>
         <div className="post">
-            <div className="post-content" onClick={() => navigate(`/singlepage/${post.id}/${post.title}`)}>
+            <Link
+                onClick={saveInStorage}
+                className="post-content"
+                to={`/posts/post/${post.id}`}
+            >
                 <p>{post.title}</p>
                 <br />
                 <p>{post.description}</p>
                 <br />
-                <p>Comments: {post.comment.length}</p>
-            </div>
+                <p>Comments: {post.comments.length}</p>
+            </Link>
             <div className="post-delete">
-                <button onClick={() => dispatch(deletePost(post.id))}>Delete</button>
+                <button onClick={() => dispatch(deletePostServer(post.id))}>
+                    Delete
+                </button>
             </div>
         </div>
+
+        <Outlet />
+        </>
     )
 }
 

@@ -3,7 +3,7 @@ import TitlePost from "./UI/input/TitlePost";
 import WritePost from "./UI/textarea/WritePost";
 import AddPost from "./UI/button/AddPost";
 import { useDispatch } from 'react-redux';
-import { addPost } from '../store/postSlice';
+import { addPostServer } from '../API/posts/addPost';
 
 const PostForm = () => {
 
@@ -15,14 +15,11 @@ const PostForm = () => {
         e.preventDefault()
         if (title.trim().length && description.trim().length) {
             const post = {
-                id: Date.now(),
                 title: title,
                 description: description,
-                userId: 12345,
-                timeAdd: Date().toLocaleString().slice(0, -37),
-                comment: [1, 2, 3]
+                comments: []
             }
-            dispatch(addPost(post))
+            dispatch(addPostServer(post))
             setTitle('')
             setDescription('')
         }
